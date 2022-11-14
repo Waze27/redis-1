@@ -1,19 +1,36 @@
-package com.develhope.redis_01.entities;
+package com.develhope.redis_01.entities.jpa;
 
-public class User {
+import javax.persistence.*;
 
+@Entity
+@Table(name = "player")
+public class PlayerJPA {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
     private String name;
     private String surname;
     private String email;
     private String passwordEncrypted;
 
-    public User(){}
-
-    public User(String name, String surname, String email, String passwordEncrypted){
+    PlayerJPA(Long id, String name, String surname, String email, String passwordEncrypted){
+        this.id = id;
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.passwordEncrypted = passwordEncrypted;
+    }
+
+    PlayerJPA(){
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {

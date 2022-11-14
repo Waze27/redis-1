@@ -1,11 +1,13 @@
-package com.develhope.redis_01.entities.jpa;
+package com.develhope.redis_01.entities.redis;
+
+import org.springframework.data.redis.core.RedisHash;
 
 import javax.persistence.*;
 
+@RedisHash(value = "player", timeToLive = 60)
 @Entity
-@Table(name = "user")
-public class UserJPA {
-
+@Table
+public class PlayerRedis {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
@@ -13,6 +15,15 @@ public class UserJPA {
     private String surname;
     private String email;
     private String passwordEncrypted;
+
+    public PlayerRedis(Long id, String name, String email, String passwordEncrypted){
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.passwordEncrypted = passwordEncrypted;
+    }
+
+    public PlayerRedis(){}
 
     public Long getId() {
         return id;

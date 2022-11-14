@@ -1,28 +1,19 @@
-package com.develhope.redis_01.entities.redis;
+package com.develhope.redis_01.entities;
 
-import org.springframework.data.redis.core.RedisHash;
+public class Player {
 
-import javax.persistence.*;
-import java.io.Serializable;
-
-@RedisHash(value = "user", timeToLive = 60)
-@Entity
-@Table
-public class UserRedis implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
     private String name;
     private String surname;
     private String email;
     private String passwordEncrypted;
 
-    public Long getId() {
-        return id;
-    }
+    public Player(){}
 
-    public void setId(Long id) {
-        this.id = id;
+    public Player(String name, String surname, String email, String passwordEncrypted){
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.passwordEncrypted = passwordEncrypted;
     }
 
     public String getName() {
