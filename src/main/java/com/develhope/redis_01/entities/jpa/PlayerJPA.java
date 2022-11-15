@@ -22,7 +22,7 @@ public class PlayerJPA {
         this.passwordEncrypted = passwordEncrypted;
     }
 
-    PlayerJPA(){
+    public PlayerJPA(){
     }
 
     public Long getId() {

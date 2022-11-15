@@ -25,6 +25,11 @@ public class PlayerController {
         return playerService.readAll();
     }
 
+    @GetMapping("/{id}")
+    public PlayerJPA readOne(@PathVariable Long id){
+        return playerService.readOne(id);
+    }
+
     @PutMapping("/{id}")
     public PlayerJPA update(@PathVariable Long id, @RequestBody PlayerJPA user) {
         return playerService.update(id, user);
